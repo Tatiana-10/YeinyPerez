@@ -350,16 +350,33 @@
                     <AnimatePresence>
                         {mobileOpen && (
                             <motion.div 
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                className="absolute top-16 left-0 w-full bg-stone-50 shadow-xl border-t border-stone-200"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="fixed inset-0 z-[60] bg-stone-50/95 backdrop-blur-xl flex flex-col items-center justify-center"
                             >
-                                <div className="flex flex-col px-6 py-8 gap-6 text-sm font-bold tracking-wide uppercase">
-                                    <a href="#about" onClick={() => setMobileOpen(false)}>Sobre Mí</a>
-                                    <a href="#services" onClick={() => setMobileOpen(false)}>Servicios</a>
-                                    <a href="#contact" onClick={() => setMobileOpen(false)}>Contacto</a>
-                                    <a href="https://wa.me/573142634086" target="_blank" rel="noopener noreferrer" className="bg-[#9191C5] text-stone-50 px-6 py-3 rounded-full mt-2 text-center">Reservar Sesión</a>
+                                <button 
+                                    onClick={() => setMobileOpen(false)}
+                                    className="absolute top-6 right-6 p-3 text-plum-900 hover:rotate-90 transition-transform duration-300"
+                                >
+                                    <XIcon />
+                                </button>
+                                
+                                <div className="flex flex-col items-center gap-10 text-3xl font-black tracking-tight uppercase text-plum-900">
+                                    <a href="#about" onClick={() => setMobileOpen(false)} className="relative hover:text-[#9191C5] transition-colors duration-300 after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-lavender-300 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Sobre Mí</a>
+                                    <a href="#services" onClick={() => setMobileOpen(false)} className="relative hover:text-[#9191C5] transition-colors duration-300 after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-lavender-300 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Servicios</a>
+                                    <a href="#contact" onClick={() => setMobileOpen(false)} className="relative hover:text-[#9191C5] transition-colors duration-300 after:content-[''] after:absolute after:w-0 after:h-[3px] after:bg-lavender-300 after:left-0 after:-bottom-2 hover:after:w-full after:transition-all after:duration-300">Contacto</a>
+                                    
+                                    <a href="https://wa.me/573142634086" target="_blank" rel="noopener noreferrer" 
+                                       className="bg-[#9191C5] text-stone-50 px-10 py-5 rounded-full mt-4 text-xl shadow-2xl hover:bg-plum-900 transition-all active:scale-95"
+                                       onClick={() => setMobileOpen(false)}>
+                                        Reservar Sesión
+                                    </a>
+
+                                    <div className="flex gap-8 mt-4">
+                                        <a href="https://www.instagram.com/yeiperezfotografavillavicencio/" target="_blank" rel="noopener noreferrer" className="text-plum-900/50 hover:text-plum-900 transition-colors"><InstaIcon /></a>
+                                        <a href="https://www.facebook.com/yeinyperezfotografiavillavicencio" target="_blank" rel="noopener noreferrer" className="text-plum-900/50 hover:text-plum-900 transition-colors"><FBIcon /></a>
+                                    </div>
                                 </div>
                             </motion.div>
                         )}
@@ -607,7 +624,8 @@
                 <div className="fixed inset-0 z-[100] flex bg-stone-50 overflow-y-auto md:overflow-hidden flex-col md:flex-row">
                     <button 
                         onClick={onClose}
-                        className="absolute top-6 right-6 z-50 p-3 bg-stone-900/10 hover:bg-stone-900 text-stone-900 hover:text-stone-50 rounded-full transition-colors backdrop-blur-md"
+                        className="absolute top-6 right-6 z-50 p-3 bg-lavender-200 text-plum-900 rounded-full shadow-2xl hover:bg-lavender-300 ring-4 ring-stone-900/5 transition-all active:scale-90"
+                        aria-label="Cerrar ventana"
                     >
                         <XIcon />
                     </button>
