@@ -22,6 +22,50 @@
 
     <link rel="canonical" href="https://yeinyperez.com/" />
     <link rel="icon" type="image/png" href="./public/assets/logo morado.png" />
+
+    <!-- Structured Data (JSON-LD) for Local Business/Photographer -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Photographer",
+      "name": "Yeiny Perez Fotografía",
+      "image": "https://yeinyperez.com/public/assets/Yeiny%20fotógrafa%201.jpg",
+      "@id": "https://yeinyperez.com/",
+      "url": "https://yeinyperez.com/",
+      "telephone": "+573142634086",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Villavicencio",
+        "addressLocality": "Villavicencio",
+        "addressRegion": "Meta",
+        "addressCountry": "CO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 4.142,
+        "longitude": -73.626
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/yeiperezfotografavillavicencio/",
+        "https://www.facebook.com/yeinyperezfotografiavillavicencio"
+      ],
+      "areaServed": "Villavicencio, Meta, Colombia",
+      "knowsAbout": ["Boda", "Quinceaños", "Bautizos", "Fotografía Boudoir", "Sesiones al Aire Libre"]
+    }
+    </script>
     
     <!-- React & ReactDOM -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -396,7 +440,7 @@
                     >
                         <img 
                             src="./public/assets/Yeiny fotógrafa 7.jpg" 
-                            alt="Yeiny Perez - Fotógrafa Profesional de Bodas y Quinceañeras en Villavicencio" 
+                            alt="Yeiny Perez - Fotografía Profesional en Villavicencio | Bodas y Quinceañeras" 
                             className="w-full h-full object-cover object-top filter grayscale contrast-125 brightness-75 -scale-x-100"
                         />
                         <div className="absolute bottom-0 w-full h-48 md:h-64 bg-gradient-to-t from-stone-50 via-stone-50/80 to-transparent z-10 pointer-events-none"></div>
@@ -409,7 +453,7 @@
                             transition={{ duration: 1, delay: 0.2 }}
                             className="text-white text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-balance mb-8"
                         >
-                            INMORTALIZO LA <span className="text-[#9191C5]">VERSIÓN MÁS</span> SEGURA DE TI
+                            FOTOGRAFÍA EN <span className="text-[#9191C5]">VILLAVICENCIO:</span> <br/> TU VERSIÓN MÁS SEGURA
                         </motion.h1>
                         
                         <motion.div
@@ -453,7 +497,7 @@
                         >
                             <img 
                                 src="./public/assets/Yeiny fotógrafa 6.jpg" 
-                                alt="Retrato de Yeiny Perez - Creadora de Recuerdos y Especialista en Bodas" 
+                                alt="Yeiny Perez - Fotógrafa en Villavicencio Meta" 
                                 className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
                             />
                         </motion.div>
@@ -465,7 +509,7 @@
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="flex flex-col gap-6"
                         >
-                            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-[#480d47] mb-6">Sobre Mí</h2>
+                            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-[#480d47] mb-6">Sobre la Fotógrafa</h2>
                             <div className="border-l-4 border-lavender-300 pl-6 py-2 my-4">
                                 <p className="text-xl md:text-2xl font-serif italic text-stone-600 leading-relaxed">
                                     "Soy fotógrafa, pero ante todo, una humana apasionada por la cotidianidad de la vida. Me inspiran los colores de mi llano y la belleza en cada detalle."
@@ -483,6 +527,7 @@
                                     <div className="text-4xl font-bold tracking-tighter text-stone-900 mb-1">100+</div>
                                     <div className="text-sm uppercase tracking-widest font-semibold text-stone-500">Personas</div>
                                 </div>
+                                <div className="w-[1px] bg-stone-200"></div>
                                 <div className="w-[1px] bg-stone-200"></div>
                                 <div>
                                     <div className="text-4xl font-bold tracking-tighter text-stone-900 mb-1">2+</div>
@@ -507,7 +552,7 @@
                     >
                         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                             <div>
-                                <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4 text-[#480d47]">Servicios</h2>
+                                <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4 text-[#480d47]">Fotografía Profesional</h2>
                                 <p className="text-xl text-stone-500 max-w-xl">Curaduría de recuerdos. Haz clic para ver los detalles de cada experiencia.</p>
                             </div>
                         </div>
@@ -798,17 +843,10 @@
                         )}
                     </AnimatePresence>
                     
-                    {/* Floating WhatsApp Button */}
-                    <a href="https://wa.me/573142634086" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-[90] flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                        </svg>
-                    </a>
                 </div>
             );
         };
 
-        // Render Application
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
