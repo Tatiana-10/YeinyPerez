@@ -504,13 +504,16 @@
             }
         }
 
-        // 5. Lógica del Modal (Servicios)
+       // 5. Lógica del Modal (Servicios)
         let carouselInterval;
+        let transitionTimeout;
+        let unlockTimeout;
         let activeImages = [];
         let currentImageIdx = 0;
-        let isAnimating = false; // Lock para prevenir bugs al hacer spam de clics
+        let isAnimating = false;
 
         function renderAccordionHTML(items, isFaq = false) {
+            // (Esta función se mantiene igual)
             if (!items || items.length === 0) return '';
             let html = '<div class="mt-12 border-t border-stone-200 pt-8"><h4 class="text-2xl font-bold mb-6">' + (isFaq ? 'Preguntas Frecuentes' : 'Paquetes Disponibles') + '</h4><div class="flex flex-col gap-4">';
             
@@ -613,38 +616,55 @@
 
             // Iniciar carrusel automático
             if (activeImages.length > 1) {
+                clearInterval(carouselInterval);
                 carouselInterval = setInterval(() => changeImage(1), 3500);
             }
         }
 
         function closeModal() {
             document.getElementById('modal-container').innerHTML = '';
+            
+            // Limpiamos absolutamente todos los temporizadores para evitar bugs
             clearInterval(carouselInterval);
+            clearTimeout(transitionTimeout);
+            clearTimeout(unlockTimeout);
+            isAnimating = false;
+            
             document.body.style.overflow = 'unset';
         }
 
         function changeImage(direction) {
-            // Prevenir bugs si el usuario hace clic muy rápido
             if (isAnimating) return;
             
             const imgEl = document.getElementById('modal-carousel-img');
             if (!imgEl) return;
             
             isAnimating = true;
-            clearInterval(carouselInterval);
-
-            imgEl.style.opacity = 0;
             
-            setTimeout(() => {
+            // Pausar y reiniciar el carrusel para que no cambie mientras transiciona
+            clearInterval(carouselInterval);
+            carouselInterval = setInterval(() => changeImage(1), 3500);
+
+            // Inicia el desvanecido
+            imgEl.style.opacity = '0';
+            
+            transitionTimeout = setTimeout(() => {
+                // Validación de seguridad: si el modal se cerró de golpe, cortamos el proceso
+                if (!document.getElementById('modal-carousel-img')) {
+                    isAnimating = false;
+                    return;
+                }
+                
+                // Cambiar imagen
                 currentImageIdx = (currentImageIdx + direction + activeImages.length) % activeImages.length;
                 imgEl.src = activeImages[currentImageIdx];
-                imgEl.style.opacity = 1;
+                imgEl.style.opacity = '1';
                 
-                // Desbloqueamos la animación cuando la imagen ya es visible nuevamente
-                setTimeout(() => {
+                // Desbloquear la animación para el siguiente deslizamiento
+                unlockTimeout = setTimeout(() => {
                     isAnimating = false;
-                    carouselInterval = setInterval(() => changeImage(1), 3500);
                 }, 300);
+                
             }, 300);
         }
 
@@ -652,6 +672,3 @@
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
-    </script>
-</body>
-</html>
