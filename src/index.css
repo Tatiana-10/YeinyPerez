@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased font-sans text-stone-900 selection:bg-lavender-200 selection:text-plum-900 bg-stone-50;
+  }
+}
+
+.glass-nav {
+  @apply bg-stone-50/70 backdrop-blur-2xl border-b border-stone-200/40;
+}
+
+.img-grayscale-hover {
+  @apply grayscale transition-all duration-700 hover:grayscale-0;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

@@ -1,0 +1,19 @@
+# dependencias
+node_modules/
+.DS_Store
+
+# build
+dist/
+dist-ssr/
+*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# edits
+.idea/
+.vscode/
+*.swp
+*.swo
